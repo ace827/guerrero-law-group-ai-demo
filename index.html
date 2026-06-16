@@ -162,17 +162,14 @@
       color: #92400e;
     }
 
-    /* ── RETELL WIDGET WRAPPER ── */
-    .widget-wrap {
+    /* ── IFRAME WIDGET ── */
+    .widget-frame {
       margin-top: auto;
-      display: flex;
-      justify-content: center;
-    }
-    /* Override Retell widget button to match brand */
-    .widget-wrap retell-widget::part(button),
-    .widget-wrap retell-widget {
-      --retell-button-bg: var(--navy);
-      --retell-button-color: white;
+      width: 100%;
+      height: 120px;
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     /* ── FOOTER ── */
@@ -248,13 +245,7 @@
         <span class="topic-chip">Case Intake</span>
         <span class="topic-chip">Directions &amp; Contact</span>
       </div>
-      <div class="widget-wrap">
-        <script
-          src="https://dashboard.retellai.com/retell-widget-v2.js"
-          data-voice-public-key="public_key_082411904b914a2bb10ab"
-          data-voice-agent-id="agent_52e4b2236402bca21f6f09201e">
-        </script>
-      </div>
+      <iframe class="widget-frame" src="agent1.html" allow="microphone"></iframe>
     </div>
   </div>
 
@@ -289,13 +280,7 @@
         <span class="topic-chip">Custody &amp; Divorce</span>
         <span class="topic-chip">Deportation Defense</span>
       </div>
-      <div class="widget-wrap">
-        <script
-          src="https://dashboard.retellai.com/retell-widget-v2.js"
-          data-voice-public-key="public_key_082411904b914a2bb10ab"
-          data-voice-agent-id="agent_58f5b7fea88f85d5f1b055af01">
-        </script>
-      </div>
+      <iframe class="widget-frame" src="agent2.html" allow="microphone"></iframe>
     </div>
   </div>
 
