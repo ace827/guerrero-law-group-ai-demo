@@ -1,297 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Guerrero Law Group — AI Receptionist Demo</title>
-  <!-- Retell widget is loaded per-instance below via data attributes -->
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:  #0d1b3e;
-      --gold:  #c9a84c;
-      --gold-light: #e8c97a;
-      --light: #f5f6f8;
-      --white: #ffffff;
-      --text:  #1a1a2e;
-      --muted: #6b7280;
-      --radius: 12px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.10);
-    }
-
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--light);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: var(--navy);
-      padding: 32px 24px 28px;
-      text-align: center;
-      border-bottom: 4px solid var(--gold);
-    }
-    header .logo-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-    header svg.scales { width: 44px; height: 44px; flex-shrink: 0; }
-    header h1 {
-      font-size: clamp(1.5rem, 4vw, 2.4rem);
-      color: var(--white);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      line-height: 1.2;
-    }
-    header h1 span { color: var(--gold); }
-    header p.tagline {
-      color: #a0aec0;
-      font-size: 0.95rem;
-      font-style: italic;
-      margin-top: 4px;
-    }
-    .badge {
-      display: inline-block;
-      margin-top: 14px;
-      background: var(--gold);
-      color: var(--navy);
-      font-family: 'Arial', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
-    }
-
-    /* ── INTRO ── */
-    .intro {
-      max-width: 780px;
-      margin: 40px auto 8px;
-      padding: 0 20px;
-      text-align: center;
-    }
-    .intro h2 {
-      font-size: 1.55rem;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .intro p {
-      color: var(--muted);
-      font-family: 'Arial', sans-serif;
-      font-size: 0.97rem;
-      line-height: 1.7;
-    }
-
-    /* ── CARDS ── */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-      max-width: 960px;
-      margin: 36px auto 60px;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #e5e7eb;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.13); }
-
-    .card-header {
-      background: var(--navy);
-      padding: 22px 24px 18px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .card-icon {
-      width: 46px; height: 46px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .card-icon svg { width: 24px; height: 24px; }
-    .card-title { color: var(--white); }
-    .card-title h3 { font-size: 1.15rem; line-height: 1.3; }
-    .card-title .sub {
-      color: var(--gold-light);
-      font-family: 'Arial', sans-serif;
-      font-size: 0.78rem;
-      margin-top: 3px;
-      letter-spacing: 0.3px;
-    }
-
-    .card-body { padding: 22px 24px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
-
-    .card-body p {
-      font-family: 'Arial', sans-serif;
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .topics {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
-    .topic-chip {
-      background: #eef2ff;
-      color: #3730a3;
-      font-family: 'Arial', sans-serif;
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-weight: 600;
-    }
-    .card:nth-child(2) .topic-chip {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    /* ── IFRAME WIDGET ── */
-    .widget-frame {
-      margin-top: auto;
-      width: 100%;
-      height: 120px;
-      border: none;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy);
-      color: #6b7280;
-      text-align: center;
-      padding: 22px;
-      font-family: 'Arial', sans-serif;
-      font-size: 0.8rem;
-      border-top: 2px solid var(--gold);
-    }
-    footer span { color: var(--gold-light); }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Georgia',serif;background:#f5f6f8;color:#1a1a2e;min-height:100vh;display:flex;flex-direction:column}
+    header{background:#0d1b3e;padding:32px 24px 28px;text-align:center;border-bottom:4px solid #c9a84c}
+    .logo-line{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
+    svg.scales{width:44px;height:44px;flex-shrink:0}
+    h1{font-size:clamp(1.5rem,4vw,2.4rem);color:#fff;font-weight:700}
+    h1 span{color:#c9a84c}
+    .tagline{color:#a0aec0;font-size:.95rem;font-style:italic;margin-top:4px}
+    .badge{display:inline-block;margin-top:14px;background:#c9a84c;color:#0d1b3e;font-family:Arial,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px}
+    .intro{max-width:680px;margin:44px auto 8px;padding:0 20px;text-align:center}
+    .intro h2{font-size:1.5rem;color:#0d1b3e;margin-bottom:10px}
+    .intro p{color:#6b7280;font-family:Arial,sans-serif;font-size:.97rem;line-height:1.7}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:860px;margin:36px auto 60px;padding:0 20px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.10);overflow:hidden;border:1px solid #e5e7eb;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
+    .card-head{background:#0d1b3e;padding:24px;display:flex;align-items:center;gap:14px}
+    .icon{width:48px;height:48px;background:#c9a84c;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .icon svg{width:24px;height:24px}
+    .card-head h3{color:#fff;font-size:1.15rem;line-height:1.3}
+    .card-head .sub{color:#e8c97a;font-family:Arial,sans-serif;font-size:.78rem;margin-top:3px}
+    .card-body{padding:22px 24px;flex:1;display:flex;flex-direction:column;gap:14px}
+    .card-body p{font-family:Arial,sans-serif;font-size:.92rem;color:#6b7280;line-height:1.65}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-family:Arial,sans-serif;font-size:.75rem;padding:4px 10px;border-radius:20px;font-weight:600}
+    .chip-blue{background:#eef2ff;color:#3730a3}
+    .chip-gold{background:#fef3c7;color:#92400e}
+    .cta{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;background:#0d1b3e;color:#fff;border-radius:8px;padding:14px 20px;font-family:Arial,sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.3px}
+    footer{background:#0d1b3e;color:#6b7280;text-align:center;padding:22px;font-family:Arial,sans-serif;font-size:.8rem;border-top:2px solid #c9a84c;margin-top:auto}
+    footer span{color:#e8c97a}
   </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <header>
   <div class="logo-line">
-    <!-- Scales of Justice SVG -->
-    <svg class="scales" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="32" y1="6" x2="32" y2="58" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
-      <line x1="10" y1="6" x2="54" y2="6" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
-      <line x1="32" y1="6" x2="10" y2="24" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
-      <line x1="32" y1="6" x2="54" y2="24" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
-      <ellipse cx="10" cy="26" rx="10" ry="5" fill="none" stroke="#c9a84c" stroke-width="2"/>
-      <ellipse cx="54" cy="26" rx="10" ry="5" fill="none" stroke="#c9a84c" stroke-width="2"/>
-      <line x1="24" y1="58" x2="40" y2="58" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
-    </svg>
+    <svg class="scales" viewBox="0 0 64 64" fill="none"><line x1="32" y1="6" x2="32" y2="58" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/><line x1="10" y1="6" x2="54" y2="6" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="6" x2="10" y2="24" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/><line x1="32" y1="6" x2="54" y2="24" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/><ellipse cx="10" cy="26" rx="10" ry="5" fill="none" stroke="#c9a84c" stroke-width="2"/><ellipse cx="54" cy="26" rx="10" ry="5" fill="none" stroke="#c9a84c" stroke-width="2"/><line x1="24" y1="58" x2="40" y2="58" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/></svg>
     <h1>Guerrero <span>Law Group</span></h1>
   </div>
   <p class="tagline">Serving Our Community with Integrity &amp; Dedication</p>
   <div class="badge">⚡ AI Receptionist Demo</div>
 </header>
 
-<!-- INTRO -->
 <div class="intro">
-  <h2>Experience Our AI Receptionist</h2>
-  <p>
-    Click either demo below to connect live with our AI receptionist. Try asking about
-    services, scheduling a consultation, or anything you'd ask when calling our office.
-  </p>
+  <h2>Choose a Demo</h2>
+  <p>Select one of the two AI receptionist demos below. Each opens its own page where you can speak live with the AI.</p>
 </div>
 
-<!-- CARDS -->
 <div class="cards">
-
-  <!-- Card 1: General -->
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">
-        <!-- Phone SVG -->
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.02-.24 11.5 11.5 0 0 0 3.58.58A1 1 0 0 1 21 16.58V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.42a1 1 0 0 1 1 .8c.1.82.3 1.62.58 3.38a1 1 0 0 1-.24 1.02L6.6 10.8z" fill="#0d1b3e"/>
-        </svg>
+  <a class="card" href="general.html">
+    <div class="card-head">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1.02-.24 11.5 11.5 0 0 0 3.58.58A1 1 0 0 1 21 16.58V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.42a1 1 0 0 1 1 .8c.1.82.3 1.62.58 3.38a1 1 0 0 1-.24 1.02L6.6 10.8z" fill="#0d1b3e"/></svg>
       </div>
-      <div class="card-title">
-        <h3>General AI Receptionist</h3>
-        <div class="sub">Full-service legal intake &amp; information</div>
-      </div>
+      <div><h3>General AI Receptionist</h3><div class="sub">Full-service legal intake &amp; information</div></div>
     </div>
     <div class="card-body">
-      <p>
-        Our general AI receptionist handles all incoming inquiries for Guerrero Law Group —
-        from scheduling consultations to answering questions about our practice areas and
-        guiding callers to the right attorney.
-      </p>
-      <div class="topics">
-        <span class="topic-chip">Consultations</span>
-        <span class="topic-chip">Office Hours</span>
-        <span class="topic-chip">Practice Areas</span>
-        <span class="topic-chip">Case Intake</span>
-        <span class="topic-chip">Directions &amp; Contact</span>
+      <p>Handles all incoming inquiries — scheduling consultations, answering practice area questions, and guiding callers to the right attorney.</p>
+      <div class="chips">
+        <span class="chip chip-blue">Consultations</span>
+        <span class="chip chip-blue">Office Hours</span>
+        <span class="chip chip-blue">Practice Areas</span>
+        <span class="chip chip-blue">Case Intake</span>
       </div>
-      <iframe class="widget-frame" src="agent1.html" allow="microphone"></iframe>
+      <div class="cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="11" rx="3" fill="white"/><path d="M5 10a7 7 0 0 0 14 0" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="19" x2="12" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="22" x2="15" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        Try This Demo →
+      </div>
     </div>
-  </div>
+  </a>
 
-  <!-- Card 2: Family & Immigration -->
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">
-        <!-- Family SVG -->
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="9" cy="6" r="3" fill="#0d1b3e"/>
-          <circle cx="17" cy="8" r="2.2" fill="#0d1b3e"/>
-          <path d="M2 20c0-3.31 3.13-6 7-6s7 2.69 7 6" stroke="#0d1b3e" stroke-width="2" stroke-linecap="round"/>
-          <path d="M17 14c2.21 0 4 1.57 4 3.5" stroke="#0d1b3e" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="6" cy="16" r="1.2" fill="#0d1b3e"/>
-        </svg>
+  <a class="card" href="family-immigration.html">
+    <div class="card-head">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="6" r="3" fill="#0d1b3e"/><circle cx="17" cy="8" r="2.2" fill="#0d1b3e"/><path d="M2 20c0-3.31 3.13-6 7-6s7 2.69 7 6" stroke="#0d1b3e" stroke-width="2" stroke-linecap="round"/><path d="M17 14c2.21 0 4 1.57 4 3.5" stroke="#0d1b3e" stroke-width="1.8" stroke-linecap="round"/></svg>
       </div>
-      <div class="card-title">
-        <h3>Family &amp; Immigration Focus</h3>
-        <div class="sub">Specialized intake for immigration &amp; family law</div>
-      </div>
+      <div><h3>Family &amp; Immigration Focus</h3><div class="sub">Specialized intake for immigration &amp; family law</div></div>
     </div>
     <div class="card-body">
-      <p>
-        This receptionist is tailored for clients seeking help with family law matters and
-        immigration cases — including visas, green cards, custody, divorce, and more.
-        It speaks to your unique situation with care and clarity.
-      </p>
-      <div class="topics">
-        <span class="topic-chip">Immigration Visas</span>
-        <span class="topic-chip">Green Cards</span>
-        <span class="topic-chip">Family Law</span>
-        <span class="topic-chip">Custody &amp; Divorce</span>
-        <span class="topic-chip">Deportation Defense</span>
+      <p>Tailored for clients seeking help with immigration cases and family law — visas, green cards, custody, divorce, and deportation defense.</p>
+      <div class="chips">
+        <span class="chip chip-gold">Immigration Visas</span>
+        <span class="chip chip-gold">Green Cards</span>
+        <span class="chip chip-gold">Family Law</span>
+        <span class="chip chip-gold">Custody &amp; Divorce</span>
       </div>
-      <iframe class="widget-frame" src="agent2.html" allow="microphone"></iframe>
+      <div class="cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="11" rx="3" fill="white"/><path d="M5 10a7 7 0 0 0 14 0" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="19" x2="12" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="22" x2="15" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        Try This Demo →
+      </div>
     </div>
-  </div>
-
+  </a>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2024 <span>Guerrero Law Group</span> — AI Receptionist Powered by <span>Retell AI</span></p>
-  <p style="margin-top:6px;">This is a demonstration. No attorney-client relationship is formed during this interaction.</p>
+  <p style="margin-top:6px">This is a demonstration. No attorney-client relationship is formed during this interaction.</p>
 </footer>
-
-
 </body>
 </html>
