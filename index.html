@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guerrero Law Group — AI Receptionist Demo</title>
-  <script src="https://unpkg.com/retell-client-js-sdk@latest/dist/index.global.js"></script>
+  <!-- Retell widget is loaded per-instance below via data attributes -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -162,68 +162,18 @@
       color: #92400e;
     }
 
-    /* ── CALL BUTTON ── */
-    .call-btn {
+    /* ── RETELL WIDGET WRAPPER ── */
+    .widget-wrap {
       margin-top: auto;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--navy);
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 14px 20px;
-      font-family: 'Arial', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.2s, transform 0.1s;
-      position: relative;
-      letter-spacing: 0.3px;
+      display: flex;
+      justify-content: center;
     }
-    .call-btn:hover { background: #162554; }
-    .call-btn:active { transform: scale(0.98); }
-    .call-btn.active { background: #991b1b; }
-    .call-btn.active:hover { background: #7f1d1d; }
-
-    /* pulse ring while active */
-    .call-btn.active::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border: 2px solid #ef4444;
-      border-radius: 10px;
-      animation: pulse-ring 1.4s ease-out infinite;
+    /* Override Retell widget button to match brand */
+    .widget-wrap retell-widget::part(button),
+    .widget-wrap retell-widget {
+      --retell-button-bg: var(--navy);
+      --retell-button-color: white;
     }
-    @keyframes pulse-ring {
-      0%   { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(1.06); }
-    }
-
-    .mic-icon { width: 20px; height: 20px; flex-shrink: 0; }
-
-    /* ── STATUS BAR ── */
-    .status-bar {
-      display: none;
-      align-items: center;
-      gap: 10px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-family: 'Arial', sans-serif;
-      font-size: 0.84rem;
-      color: #166534;
-    }
-    .status-bar.visible { display: flex; }
-    .status-bar.error { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
-    .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      animation: blink 1s ease-in-out infinite;
-    }
-    .status-bar.error .dot { background: #ef4444; animation: none; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     /* ── FOOTER ── */
     footer {
@@ -298,19 +248,13 @@
         <span class="topic-chip">Case Intake</span>
         <span class="topic-chip">Directions &amp; Contact</span>
       </div>
-      <div class="status-bar" id="status-1">
-        <div class="dot"></div>
-        <span id="status-text-1">Connected — speak now</span>
+      <div class="widget-wrap">
+        <script
+          src="https://dashboard.retellai.com/retell-widget-v2.js"
+          data-voice-public-key="public_key_082411904b914a2bb10ab"
+          data-voice-agent-id="agent_52e4b2236402bca21f6f09201e">
+        </script>
       </div>
-      <button class="call-btn" id="btn-1" onclick="toggleCall(1, 'agent_52e4b2236402bca21f6f09201e')">
-        <svg class="mic-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="9" y="2" width="6" height="11" rx="3" fill="white"/>
-          <path d="M5 10a7 7 0 0 0 14 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="12" y1="19" x2="12" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="9" y1="22" x2="15" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span id="btn-text-1">Start Demo Call</span>
-      </button>
     </div>
   </div>
 
@@ -345,19 +289,13 @@
         <span class="topic-chip">Custody &amp; Divorce</span>
         <span class="topic-chip">Deportation Defense</span>
       </div>
-      <div class="status-bar" id="status-2">
-        <div class="dot"></div>
-        <span id="status-text-2">Connected — speak now</span>
+      <div class="widget-wrap">
+        <script
+          src="https://dashboard.retellai.com/retell-widget-v2.js"
+          data-voice-public-key="public_key_082411904b914a2bb10ab"
+          data-voice-agent-id="agent_58f5b7fea88f85d5f1b055af01">
+        </script>
       </div>
-      <button class="call-btn" id="btn-2" onclick="toggleCall(2, 'agent_58f5b7fea88f85d5f1b055af01')">
-        <svg class="mic-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="9" y="2" width="6" height="11" rx="3" fill="white"/>
-          <path d="M5 10a7 7 0 0 0 14 0" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="12" y1="19" x2="12" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="9" y1="22" x2="15" y2="22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span id="btn-text-2">Start Demo Call</span>
-      </button>
     </div>
   </div>
 
@@ -369,101 +307,6 @@
   <p style="margin-top:6px;">This is a demonstration. No attorney-client relationship is formed during this interaction.</p>
 </footer>
 
-<script>
-  const PUBLIC_KEY = 'public_key_082411904b914a2bb10ab';
-  let activeCall = null;  // { id, client }
-  let activeCardId = null;
-
-  async function toggleCall(cardId, agentId) {
-    // If same card is active → end call
-    if (activeCardId === cardId && activeCall) {
-      endCall();
-      return;
-    }
-    // If different card is active → end that one first
-    if (activeCall) endCall();
-
-    startCall(cardId, agentId);
-  }
-
-  async function startCall(cardId, agentId) {
-    const btn = document.getElementById('btn-' + cardId);
-    const btnText = document.getElementById('btn-text-' + cardId);
-    const statusBar = document.getElementById('status-' + cardId);
-    const statusText = document.getElementById('status-text-' + cardId);
-
-    btnText.textContent = 'Connecting…';
-    btn.disabled = true;
-
-    try {
-      // 1. Fetch web-call credentials from Retell
-      const res = await fetch('https://api.retellai.com/v2/create-web-call', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + PUBLIC_KEY,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ agent_id: agentId })
-      });
-
-      if (!res.ok) throw new Error('Failed to create call (' + res.status + ')');
-      const data = await res.json();
-
-      // 2. Start RetellWebClient
-      const client = new RetellWebClient();
-
-      client.on('call_started', () => {
-        btn.classList.add('active');
-        btn.disabled = false;
-        btnText.textContent = 'End Call';
-        statusBar.classList.add('visible');
-        statusBar.classList.remove('error');
-        statusText.textContent = 'Connected — speak now';
-      });
-
-      client.on('call_ended', () => {
-        resetCard(cardId);
-      });
-
-      client.on('error', (err) => {
-        statusBar.classList.add('visible', 'error');
-        statusText.textContent = 'Error: ' + (err?.message || 'Connection failed');
-        resetCard(cardId, true);
-      });
-
-      await client.startCall({ accessToken: data.access_token });
-
-      activeCall = { id: data.call_id, client };
-      activeCardId = cardId;
-
-    } catch (err) {
-      statusBar.classList.add('visible', 'error');
-      statusText.textContent = err.message || 'Could not connect. Please try again.';
-      btn.disabled = false;
-      btnText.textContent = 'Start Demo Call';
-    }
-  }
-
-  function endCall() {
-    if (activeCall) {
-      try { activeCall.client.stopCall(); } catch(e) {}
-      resetCard(activeCardId);
-      activeCall = null;
-      activeCardId = null;
-    }
-  }
-
-  function resetCard(cardId, keepStatus) {
-    const btn = document.getElementById('btn-' + cardId);
-    const btnText = document.getElementById('btn-text-' + cardId);
-    const statusBar = document.getElementById('status-' + cardId);
-    btn.classList.remove('active');
-    btn.disabled = false;
-    btnText.textContent = 'Start Demo Call';
-    if (!keepStatus) statusBar.classList.remove('visible');
-    if (activeCardId === cardId) { activeCall = null; activeCardId = null; }
-  }
-</script>
 
 </body>
 </html>
